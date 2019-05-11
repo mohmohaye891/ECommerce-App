@@ -12,6 +12,54 @@
             android:layout_width="match_parent"
             android:theme="@style/AppTheme.AppBarOverlay">
 
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_marginLeft="@dimen/margin_medium_2">
+
+            <ImageView
+                    android:id="@+id/iv_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:src="@drawable/ic_format_align_left_white_24dp"/>
+
+            <TextView
+                    android:id="@+id/tv_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discover"
+                    android:layout_toRightOf="@+id/iv_menu"
+                    android:layout_marginLeft="@dimen/margin_xlarge"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_heading_1x"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:src="@drawable/ic_work_white_24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/tv_discover"
+                    android:layout_marginLeft="@dimen/margin_xlarge"
+
+            />
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:drawableLeft="@drawable/ic_search_gray_24dp"
+                    android:background="#fff"
+                    android:drawablePadding="@dimen/margin_medium_2"
+                    android:layout_marginRight="@dimen/margin_medium_2"
+                    android:paddingLeft="@dimen/margin_medium_2"
+                    android:layout_alignParentBottom="true"
+                    android:hint="What are you looking for"
+                    android:layout_marginBottom="@dimen/margin_medium_2"
+                    android:layout_height="50dp"/>
+
+        </RelativeLayout>
+
         <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -27,44 +75,46 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/margin_medium_2">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_medium_2">
 
             <TextView
                     android:id="@+id/tv_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_medium_3"
+                    android:textSize="@dimen/text_regular_2x"
                     android:text="@string/lbl_category"/>
 
             <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_category"
+                    android:id="@+id/rvCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_category"
-            android:layout_marginTop="@dimen/margin_medium_2">
+                    android:layout_marginTop="@dimen/margin_medium_2">
 
             </android.support.v7.widget.RecyclerView>
 
+            <TextView
+                    android:id="@+id/tv_hot_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rvCategory"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:text="@string/lbl_hot_item"/>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvProduct"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/tv_hot_item"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:layout_height="wrap_content"/>
 
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
-   <!-- <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/bgBottomNavigation"
-        android:foreground="@android:color/white"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        app:menu="@menu/bottom_nav" >
-
-    </android.support.design.widget.BottomNavigationView>-->
 
     <android.support.design.widget.BottomNavigationView
             android:layout_alignParentBottom="true"
@@ -75,5 +125,14 @@
             app:itemTextColor="@drawable/nav_item_background"
             app:itemIconTint="@drawable/nav_item_background"
             app:menu="@menu/bottom_nav"/>
+
+    <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/margin_medium_2"
+            android:src="@drawable/ic_favorite_white_24dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

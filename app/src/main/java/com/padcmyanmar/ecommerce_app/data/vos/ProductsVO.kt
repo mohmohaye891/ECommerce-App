@@ -1,58 +1,56 @@
 package com.padcmyanmar.ecommerce_app.data.vos
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Embedded
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-open class ProductsVO(productId: String = "",
-                      productName: String = "",
-                      productImages : List<String> = ArrayList(),
-                      productDescription: String = "",
-                      productPrice: String = "",
-                      category: List<CategoryVO> = ArrayList(),
-                      uploadedTime: String = "",
-                      uploadedDate: String = "",
-                      seller: SellerVO? = null,
-                      availability: Boolean = false
-                      ) {
-    @SerializedName("product_id")
-    open var productId: String = productId
 
+@Entity(tableName = "product")
+data class ProductsVO(
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "product_id_auto")
+    val productIDPK: Int,
+
+    @ColumnInfo(name = "product_id")
+    @SerializedName("product_id")
+    val productID: Int,
+
+    @ColumnInfo(name = "product_name")
     @SerializedName("product_name")
-    var productName: String = productName
+    val productName: String,
 
     @SerializedName("product_image_url")
-    var productImages: List<String>? = productImages
-        get() {
-            return if (field == null)
-                ArrayList()
-            else
-                field
-        }
+    var productImageUrl: MutableList<ProductImageVO>,
 
+    @ColumnInfo(name = "product_desc")
     @SerializedName("product_desc")
-    var productDescription: String = productDescription
+    val desc: String,
 
+    @ColumnInfo(name = "product_price")
     @SerializedName("product_price")
-    var productPrice: String = productPrice
+    val price: String,
 
     @SerializedName("category")
-    var category: List<CategoryVO>? = category
-        get() {
-            return if (field == null)
-                ArrayList()
-            else
-                field
-        }
+    val category: MutableList<CategoryVO>,
 
+    @ColumnInfo(name = "uploaded_time")
     @SerializedName("uploaded_time")
-    var uploadedTime: String = uploadedTime
+    val uploadedTime: String? = "",
 
+    @ColumnInfo(name = "uploaded_date")
     @SerializedName("uploaded_date")
-    var uploadedDate: String = uploadedDate
+    val uploadedDate: String? = "",
 
+    @Embedded(prefix = "seller_")
     @SerializedName("seller")
-    var seller: SellerVO? = seller
+    val seller: SellerVO,
 
+    @ColumnInfo(name = "availability")
     @SerializedName("availability")
-    var availability: Boolean = availability
+    val availability: Boolean
 
-}
+
+)

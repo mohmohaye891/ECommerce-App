@@ -28,6 +28,7 @@ abstract class BaseRecyclerAdapter<T, W : Any>(context: Context) : RecyclerView.
 
     override fun getItemCount(): Int {
         return mData!!.size
+
     }
 
     fun setNewData(newData: MutableList<W>) {
